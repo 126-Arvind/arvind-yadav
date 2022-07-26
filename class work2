@@ -1,0 +1,29 @@
+class guitar:
+    def __init__(self) -> None:
+        self.strings=6
+        self.play()
+    def play(self):
+        print('play melody')
+class new(guitar):
+    def loud(self):
+        print('new song')
+muguit=new()
+muguit.loud()
+
+########## super #######
+class guitar:
+    def __init__(self):
+        self.strings=6
+        self.play()
+    def play(self):
+        print('play melody')
+class new(guitar):
+    def __init__(self):
+        super().__init__()
+        self.strings=7
+    def loud(self):
+        print('new song')
+muguit=new()
+muguit.loud()
+print('child class:',muguit.strings)
+print('parent class:',guitar().strings)
