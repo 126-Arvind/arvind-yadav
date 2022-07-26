@@ -1,0 +1,17 @@
+# polymorphism is ability to use common interface for multiple form
+# I.E color is common property but different attributes
+# ###### method overloading ########## class with 2 same named method but perform different functions
+
+class cricket:
+    def game(self):
+        print('i will play cricket')
+class football:
+    def game(self):
+        print('i will play football')
+
+def sport(Game):
+    Game.game()
+mon=cricket()
+sun=football()
+
+sport(mon)
