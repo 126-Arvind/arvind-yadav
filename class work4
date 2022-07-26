@@ -1,0 +1,15 @@
+# ###### abstraction ##########
+
+
+from abc import ABC, abstractmethod
+class computer:
+    @abstractmethod
+    def process(self):
+        print('parent class')
+class laptop(computer):
+    def fun(self):
+        print('this is child class')
+
+obj=laptop()
+obj.process()
+obj.
