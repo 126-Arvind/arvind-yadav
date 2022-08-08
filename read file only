@@ -1,0 +1,6 @@
+print('print')
+f=open('demo11.py','a')
+f.writelines(['syman'])
+f.close()
+g=open('demo11.py','r')
+print(g.read())
