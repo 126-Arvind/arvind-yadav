@@ -1,0 +1,56 @@
+from tkinter import *
+
+from tkinter.filedialog import askopenfilename,asksaveasfilename
+import moviepy.editor as me
+
+filename=''
+
+def convert():
+        global filename
+        filetypes=(("Audio files",".mp3 , *.waw , *.ogg"),("All files",".*"))
+        video=me.VideoFileClip(filename)
+        audio=video.audio
+        file=asksaveasfilename(filetypes=filetypes)
+        audio.write_audiofile(f'{file}{format.get()}')
+        label5=Label(root,text="Done",font=("Arial",18),fg="green")
+        label5.pack()
+        label5.place(x=450,y=300)
+def select():
+    global filename
+    filetypes = (
+        ('video files', '*.WEBM , *.MPG, *.MP2 , *.MPEG , *.MPE , *.MPV , *.MP4 , *.M4P , *.M4V , *.AVI , *.WMV , *.MOV , *.QT , *.FLV , *.SWF , *.AVCHD'),
+        ('All files', '.')
+    )
+    filename=askopenfilename(filetypes=filetypes)
+    label3.config(text="File Selected",fg="orange",bg='white')
+    label4=Label(root,text="Select Audio format :-",font=("Arial",18),bg='white')
+    label4.pack()
+    label4.place(x=40,y=250)
+    options=[".mp3",".ogg",".wav"]
+    format.set(".mp3")
+    menu=OptionMenu(root,format,*options)
+    menu.pack()
+    menu.place(x=290,y=250)
+    button3=Button(root,text="Export",font=("Harlow Solid",13,"bold"),fg='red',bg='white',command=convert,width=10,height=1)
+    button3.pack()
+    button3.place(x=250,y=300)
+
+root=Tk()
+root.geometry("600x350")
+root.minsize(600,350)
+root.maxsize(600,350)
+root.configure(bg='white')
+root.title("Video to Audio Converter")
+label1=Label(root,text="Video to Audio Converter",font=("Blackletter 93",32,"bold","italic"),bg='white')
+label1.pack()
+label2=Label(root,text="Select Video file to Convert",font=("Arial",17,"bold"),bg='white')
+label2.pack()
+label2.place(x=175,y=100)
+button1=Button(root,text="Select",font=("Harlow Solid",13,"bold"),fg='green',bg='white',command=select,width=10,height=1)
+button1.pack()
+button1.place(x=250,y=200)
+label3=Label(root,font=("Footlight MT",18,"bold"))
+label3.pack()
+label3.place(x=225,y=150)
+format=StringVar()
+root.mainloop()
